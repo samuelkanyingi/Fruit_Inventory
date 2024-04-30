@@ -1,0 +1,75 @@
+<html>
+	<head>
+	<style>
+	   .sidebar {
+		      min-height: 100vh;
+		      background-color: black;
+	   }
+	   .link, .active {
+		   text-decoration: none;
+	   }
+	</style>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous">
+
+	</head>
+	<body>
+		<div class="alert alert-primary" role="alert">
+  A simple primary alert—check it out!
+</div>
+		<i class="fas fa-trash"></i>
+
+	   <div class="container">
+		   <h1>This is a bootstrap test</h2>
+		   <button type="button" class="btn-btn-primary">button</button>
+           </div>
+	   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#">Navbar</a>
+
+            <!-- Navbar toggler (for mobile) -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+	   <div class="container-fluid">
+		   <div class="row">
+			   <div class="col-md-3 sidebar">
+				   <h1> sidebar content</h1>
+				   <a href="#" class="active"><i class="fas fa-home"></i> Home</a><br>
+				    <a href="#"class= "link"><i class="fas fa-cog"></i> Settings</a>
+		           </div>
+                   </div>
+	   </div>
+	   <button id="successButton" class="btn btn-success">Click me!</button>
+<div id="message" class="alert alert-success" style="display: none;"></div>
+<script>
+	document.getElementById("successButton").addEventListener("click", function() {
+  var messageElement = document.getElementById("message");
+  messageElement.textContent = "Success! Your message here.";
+  messageElement.style.display = "block";
+});
+</script>
+	</body>
+
+</html>

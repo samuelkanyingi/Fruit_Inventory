@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Fruit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+  <a class="navbar-brand" href="#">Inventory</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="table.html">Manage fruits</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="chart.html">Insight</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+    <h2>Add New Fruit</h2>
+    <form action="/add_fruit" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="quantity">Quantity:</label><br>
+        <input type="number" id="quantity" name="quantity"><br><br>
+	<button id="add" type="submit"  class="btn btn-primary" value="submit">Add</button>
+	<div id="alertMessage" class="alert alert-success" role="alert" style="display: none;">
+		Successfully Added!
+</div>
+    </form>
+    <script>
+  document.getElementById("add").addEventListener("click", function() {
+	  //alert("Added Successfully");
+	  var alertElement = document.getElementById("alertMessage");
+  alertElement.style.display = "block";
+});
+    </script>
+</body>
+</html>
+

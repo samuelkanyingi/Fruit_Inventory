@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart.js with Flask Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+        // Function to render the chart
+        
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+		    labels: {{ data.names |  tojson | safe  }},
+                    datasets: [{
+                        label: 'fruit',
+			data: {{ data.quantities | tojson | safe  }},
+                        backgroundColor: ['blue', 'green'], 
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+		    responsive : false,
+		    scales: {
+			y:{
+			  beginAtZero: true
+                	}
+            		}
+			}});
+    </script>
+</body>
+</html>
+
