@@ -31,27 +31,59 @@ body {
 .error-message {
     color: red;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+	display: inline;
+}
     </style>
+
 </head>
 <body>
+<ul>
+  <li><a href="default.asp">Home</a></li>
+  <li><a href="news.asp">News</a></li>
+  <li><a href="contact.asp">Contact</a></li>
+  <li><a href="about.asp">About</a></li>
+</ul>
     <div class="container">
-  <form class="login-form" id="login-form" onsubmit="validateLoginForm(event)">
+  <form  action='/login_user' method="post" class="login-form" id="login-form" onsubmit="validateLoginForm(event)">
     <h2>Login</h2>
+{% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-danger">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+
     <!-- Login form fields -->
+ <!--
     <div class="form-group">
         <label for="login-username">Username</label>
-        <input type="text" class="form-control" id="login-username" placeholder="Enter username">
+        <input type="text" name='username' class="form-control" id="login-username" placeholder="Enter username">
         <small class="error-message" id="username-error"></small>
     </div>
+    -->
+    <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" name="email" class="form-control" id="signup-email" placeholder="Enter email">
+	    <small class="error-message" id="email-error"></small>
+          </div>
+
     <div class="form-group">
         <label for="login-password">Password</label>
-        <input type="password" class="form-control" id="login-password" placeholder="Enter password">
+        <input type="password" name='password' class="form-control" id="login-password" placeholder="Enter password">
         <small class="error-message" id="password-error"></small>
     </div>
     <br>
+    <input type="hidden" name="Content-Type" value="application/json">
     <button type="submit" class="btn btn-primary">Login</button>
-    <p class="text-center">Don't have an account? <a href="signup.html">Sign up</a></p>
-
+    <p class="text-center">Don't have an account? <a href="/signme">Sign up</a></p>
+    <p class="text-center">Have you forgot your password? <a href="/forgot-password">Forgot Password</a></p>
   </form>
 </div>
 
@@ -59,16 +91,16 @@ body {
     function validateLoginForm(event) {
       event.preventDefault(); // Prevent form submission if validation fails
   
-      const username = document.getElementById('login-username').value.trim();
+      const username = document.getElementById('signup-email').value.trim();
       const password = document.getElementById('login-password').value.trim();
 
       // Clear previous error messages
-      document.getElementById('username-error').textContent = '';
+      document.getElementById('email-error').textContent = '';
       document.getElementById('password-error').textContent = '';
   
       // Perform validation checks
       if (username === '') {
-        document.getElementById('username-error').textContent = 'Please enter a username.';
+        document.getElementById('email-error').textContent = 'Please enter a email.';
         return;
       }
   
@@ -79,7 +111,28 @@ body {
   
       // If all validations pass, you can submit the form programmatically
       document.getElementById('login-form').submit();
-    }
+    
+   fetch('/login_user', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+	body: JSON.stringify({username, password})
+    })
+	.then(response=>response.json())
+	.then(data => {
+	if (data.message === 'invalid-login') {
+				alert('Invalid login. Please check your credentials.');
+        } else {
+            window.location.href = '/table';
+        }
+    })
+	.catch(error => {
+        console.error('Error:', error);
+        //alert('An error occurred. Please try again later.');
+      });
+	    }
+
   </script>
 </body>
-</html>
+</html

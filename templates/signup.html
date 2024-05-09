@@ -35,32 +35,33 @@ body {
 </head>
 <body>
     <div class="container">   
-        <form class="signup-form" id="signup-form" onsubmit="validateSignupForm(event)">
+        <form action='/signup' method="post" class="signup-form" id="signup-form" onsubmit="validateSignupForm(event)">
           <h2>Signup</h2>
-          <div class="form-group">
+          <!--<div class="form-group">
             <label for="signup-name">First Name</label>
             <input type="text" class="form-control" id="signup-firstname" placeholder="Enter first name">
           </div>
           <div class="form-group">
             <label for="signup-lastname">Last Name</label>
             <input type="text" class="form-control" id="signup-lastname" placeholder="Enter last name">
-          </div>
+	  </div>-->
           <div class="form-group">
             <label for="signup-username">Username</label>
-            <input type="text" class="form-control" id="signup-username" placeholder="Enter username">
+	    <input type="text" name="username" class="form-control" id="signup-username" placeholder="Enter username">
             <small class="error-message" id="username-error"></small>
           </div>
           <div class="form-group">
             <label for="signup-email">Email</label>
-            <input type="email" class="form-control" id="signup-email" placeholder="Enter email">
+            <input type="email" name="email" class="form-control" id="signup-email" placeholder="Enter email">
           </div>
           <div class="form-group">
             <label for="signup-password">Password</label>
-            <input type="password" class="form-control" id="signup-password" placeholder="Enter password">
+            <input type="password" name= "password" class="form-control" id="signup-password" placeholder="Enter password">
             <small class="error-message" id="password-error"></small>
           </div>
           <br>
           <button type="submit" class="btn btn-primary">Signup</button>
+	  <p class="text-center">Already have an account? <a href="/login">Login</a></p>
         </form>
       </div>
       <script>
@@ -86,7 +87,7 @@ body {
           }
       
           // If all validations pass, you can submit the form programmatically
-          document.getElementById('login-form').submit();
+          document.getElementById('signup-form').submit();
         }
       </script>  
 </body>

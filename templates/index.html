@@ -44,6 +44,24 @@
 	  var alertElement = document.getElementById("alertMessage");
   alertElement.style.display = "block";
 });
+  document.getElementById('fruitForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        var nameInput = document.getElementById('name').value.trim(); // Trim whitespace
+        var quantityInput = document.getElementById('quantity').value;
+
+        // Check if the name already exists in the list of existing names
+        var existingNames = document.querySelectorAll('#existingNames');
+        for (var i = 0; i < existingNames.length; i++) {
+            if (existingNames[i].textContent.trim() === nameInput) {
+                //alert('Error: Fruit with this name already exists!');
+                return; // Exit function without submitting the form
+            }
+        }
+
+        // If the name is unique, submit the form
+        document.getElementById('fruitForm').submit();
+    });
     </script>
 </body>
 </html>
